@@ -8,7 +8,7 @@ body {
     color: white;
 }
 
-#overlay {
+#overlay, #webgl {
     position: absolute;
     top: 0px;
     left: 0px;
