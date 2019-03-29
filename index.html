@@ -32,9 +32,9 @@
 		<div id="content">
 			<!-- <h2>Facetracking example</h2> -->
 			<div id="container">
-				<video id="videoel" width="800" height="600" preload="auto" loop playsinline autoplay>
+				<video id="videoel" width="800" height="600" preload="auto" style="visibility:hidden" loop playsinline autoplay>
 				</video>
-				<canvas id="overlay" width="800" height="600"></canvas>
+				<canvas id="overlay" width="800" height="600" style="display:none"></canvas>
 				<canvas id="webgl" width="800" height="600"></canvas>
 			</div>
 			<br/>
@@ -60,7 +60,7 @@
 					<option value="16">Abstract (Scream)</option>
 				</select>
 			</div>
-			<input class="btn" type="button" value="wait, loading video" disabled="disabled" onclick="startVideo()" id="startbutton"></input>
+			<input class="btn" type="button" value="wait, loading video" disabled="disabled" onclick="startVideo()" id="startbutton" style="margin-top:80vh;"></input>
 			<!-- <div id="text">
 				<p>This is an example of face tracking using the javascript library <a href="https://github.com/auduno/clmtrackr"><em>clmtrackr</em></a>. The fitting method is generally called "Non-rigid/deformable face tracking/alignment using constrained local models".</p>
 				<p>Note that this example works best in Google Chrome, with a computer that supports WebGL and floating point textures. It should however work in any modern browser.</p>
