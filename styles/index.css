@@ -5,6 +5,7 @@ body {
     background-color: black;
     margin: 0px auto;
     max-width: 1150px;
+    color: white;
 }
 
 #overlay {

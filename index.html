@@ -19,6 +19,15 @@
 	</head>
 
 	<body>
+		<script src="./js/libs/dat.gui.min.js"></script>
+		<script src="./js/libs/utils.js"></script>
+		<script src="./js/libs/webgl-utils.js"></script>
+		<script src="./build/clmtrackr.js"></script>
+		<script src="./models/model_pca_20_svm.js"></script>
+		<script src="./js/libs/Stats.js"></script>
+		<script src="./js/face_deformer.js"></script>
+		<script src="./js/libs/jquery.min.js"></script>
+		<script src="./js/libs/poisson_new.js"></script>
 		
 		<div id="content">
 			<!-- <h2>Facetracking example</h2> -->
@@ -26,7 +35,7 @@
 				<video id="videoel" width="800" height="600" preload="auto" loop playsinline autoplay>
 				</video>
 				<canvas id="overlay" width="800" height="600"></canvas>
-				<canvas id="webgl" width="400" height="300"></canvas>
+				<canvas id="webgl" width="800" height="600"></canvas>
 			</div>
 			<br/>
 			<div id="controls">
@@ -76,15 +85,7 @@
 			</div> -->
 			<!-- <a href="https://github.com/auduno/clmtrackr"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_green_007200.png" alt="Fork me on GitHub"></a> -->
 			
-			<script src="./js/libs/dat.gui.min.js"></script>
-			<script src="./js/libs/utils.js"></script>
-			<script src="./js/libs/webgl-utils.js"></script>
-			<script src="./build/clmtrackr.js"></script>
-			<script src="./models/model_pca_20_svm.js"></script>
-			<script src="./js/libs/Stats.js"></script>
-			<script src="./js/face_deformer.js"></script>
-			<script src="./js/libs/jquery.min.js"></script>
-			<script src="./js/libs/poisson_new.js"></script>
+			<canvas id="webgl2" width="800" height="600"></canvas>
 			
 			<script>
 
@@ -455,32 +456,32 @@
 					cc.fill();
 				}
 
-				// function drawGridLoop() {
-				// 	// get position of face
-				// 	positions = ctrack.getCurrentPosition();
+				function drawGridLoop() {
+					// get position of face
+					positions = ctrack.getCurrentPosition();
 
-				// 	overlayCC.clearRect(0, 0, vid_width, vid_height);
-				// 	if (positions) {
-				// 		// draw current grid
-				// 		ctrack.draw(overlay);
-				// 	}
-				// 	// check whether mask has converged
-				// 	var pn = ctrack.getConvergence();
-				// 	if (pn < 0.4) {
-				// 		switchMasks(positions);
-				// 	} else {
-				// 		detectionRequest = requestAnimFrame(drawGridLoop);
-				// 	}
-				// }
+					overlayCC.clearRect(0, 0, vid_width, vid_height);
+					if (positions) {
+						// draw current grid
+						ctrack.draw(overlay);
+					}
+					// check whether mask has converged
+					var pn = ctrack.getConvergence();
+					if (pn < 0.4) {
+						switchMasks(positions);
+					} else {
+						detectionRequest = requestAnimFrame(drawGridLoop);
+					}
+				}
 
-				// function drawLoop() {
-				// 	requestAnimFrame(drawLoop);
-				// 	overlayCC.clearRect(0, 0, vid_width, vid_height);
-				// 	//psrElement.innerHTML = "score :" + ctrack.getScore().toFixed(4);
-				// 	if (ctrack.getCurrentPosition()) {
-				// 		ctrack.draw(overlay);
-				// 	}
-				// }
+				function drawLoop() {
+					requestAnimFrame(drawLoop);
+					overlayCC.clearRect(0, 0, vid_width, vid_height);
+					//psrElement.innerHTML = "score :" + ctrack.getScore().toFixed(4);
+					if (ctrack.getCurrentPosition()) {
+						ctrack.draw(overlay);
+					}
+				}
 
 				/*********** Code for stats **********/
 
