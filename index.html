@@ -16,9 +16,9 @@
 			}
 		</script>
 		<script type="text/javascript" src="js/pre.js"></script>
-	</head>
 
-	<body>
+		<!-- Config for Facetracker -->
+		<!-- TODO: Need to move the code into the body element for possible improvements in performance -->
 		<script src="./js/libs/dat.gui.min.js"></script>
 		<script src="./js/libs/utils.js"></script>
 		<script src="./js/libs/webgl-utils.js"></script>
@@ -28,7 +28,12 @@
 		<script src="./js/face_deformer.js"></script>
 		<script src="./js/libs/jquery.min.js"></script>
 		<script src="./js/libs/poisson_new.js"></script>
-		
+
+		<!-- Config for Screenshot in the webcam -->
+		<script src="./js/webcam.min.js"></script>
+	</head>
+
+	<body>
 		<div id="content">
 			<!-- <h2>Facetracking example</h2> -->
 			<div id="container">
@@ -63,7 +68,14 @@
 			<input class="btn" type="button" value="wait, loading video" disabled="disabled" onclick="startVideo()" id="startbutton" style="margin-top:80vh;"></input>
 			
 			<canvas id="webgl2" width="800" height="600"></canvas>
+
 			
+			<div id="results">Your captured image will appear here...</div>
+	
+			<h1>WebcamJS Test Page</h1>
+			<h3>Demonstrates simple 320x240 capture &amp; display</h3>
+
+			<div id="my_camera"></div>
 
 			<!-- Pre Config 01 -->
 			<script>
@@ -116,6 +128,42 @@
 
 			<!-- *********** Code for face tracking *********/ -->
 			<script src="./js/facetracking.js"></script>
+			
+
+			<!-- ************************************************* -->
+			<!-- Code for the Facecapture -->
+			<!-- Also using download.js -->
+			<script src="./js/download.js"></script>
+
+			<script>
+				Webcam.set({
+					width: 320,
+					height: 240,
+					image_format: 'jpeg',
+					jpeg_quality: 90
+				});
+				Webcam.attach( '#my_camera' );
+			</script>
+
+			<form>
+				<input type=button value="Take Snapshot" onClick="take_snapshot()">
+			</form>
+
+			<!-- Code to handle taking the snapshot and displaying it locally -->
+			<script language="JavaScript">
+				function take_snapshot() {
+					// take snapshot and get image data
+					Webcam.snap( function(data_uri) {
+						// display results in page
+						console.log(data_uri);
+						download(data_uri, "person.jpg", "image/jpg");
+						
+						document.getElementById('results').innerHTML = 
+							'<h2>Here is your image:</h2>' + 
+							'<img src="'+data_uri+'" download/>';
+					} );
+				}
+			</script>
 
 		</div>
 	</body>
