@@ -60,6 +60,7 @@
 					<option value="14">Mona Lisa</option>
 					<option value="15">Picasso</option>
 					<option value="16">Abstract (Scream)</option>
+					<option value="17">Person_0</option>
 				</select>
 			</div>
 			<input class="btn" type="button" value="wait, loading video" disabled="disabled" onclick="startVideo()" id="startbutton" style="margin-top:80vh;"></input>
@@ -67,9 +68,10 @@
 			<canvas id="webgl2" width="800" height="600"></canvas>
 
 			
-			<div id="results">Your captured image will appear here...</div>
-			<div id="results_sample_canvas"></div>
-	
+			<canvas id="results" width="800" height="600">Your captured image will appear here...</canvas>
+			<canvas id="results_overlay" width="800" height="600"></canvas>
+			
+			<div id="captured_complete"></div>
 			<h1>WebcamJS Test Page</h1>
 			<h3>Demonstrates simple 320x240 capture &amp; display</h3>
 
