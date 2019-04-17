@@ -208,6 +208,7 @@ function drawMaskLoop() {
         // fd is a face deformer. Assuming it is used to deform the mask according to my face's coordinate.
         fd.draw(positions);
     }
+    // console.log('drawMaskLoop');
 }
 
 function createMasking(canvas, modelpoints) {
@@ -256,6 +257,7 @@ function drawLoop() {
     if (ctrack.getCurrentPosition()) {
         ctrack.draw(overlay);
     }
+    // console.log('drawloop');
 }
 
 /*********** Code for stats **********/

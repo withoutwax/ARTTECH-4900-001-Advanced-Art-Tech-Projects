@@ -29,11 +29,13 @@ var faceDeformer = function() {
 		}
 		numTriangles = verticeMap.length;
 
+		console.log(element);
+
 		// get cropping
 		maxx = 0;
 		minx = element.width;
 		maxy = 0;
-		miny = element.height;
+		miny = element.height ;
 		for (var i = 0;i < points.length;i++) {
 			if (points[i][0] > maxx) maxx = points[i][0];
 			if (points[i][0] < minx) minx = points[i][0];
