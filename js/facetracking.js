@@ -153,6 +153,10 @@ function switchMasks(pos) {
     videocanvas.getContext('2d').drawImage(vid,0,0,videocanvas.width,videocanvas.height);
 
     // we need to extend the positions with new estimated points in order to get pixels immediately outside mask
+    
+    console.log('masks[images[currentMask].id]',masks[images[currentMask].id]);
+    console.log('currentMask', currentMask);
+
     var newMaskPos = masks[images[currentMask].id].slice(0);
     var newFacePos = pos.slice(0);
     var extInd = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,22,21,20,19];
