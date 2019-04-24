@@ -12,7 +12,7 @@ var id_number = 0;
 var id_name = "person_" + id_number;
 var img_width;
 var img_height;
-var option_val = 17;
+var option_val = 16;
 var selectMask = document.querySelector('#selectmask');
 
 function take_snapshot() {
@@ -31,26 +31,20 @@ function take_snapshot() {
 
         // ************** Newly added captured users **************
         // Append the newly captured user to images lists
+        id_number += 1; // Update the id number
         id_name = "person_" + id_number;
         images.push({"id":id_name, "path":data_uri});
         
 
         // Update the option in select menu
+        option_val += 1;
         createOption(id_name);
-
-
-        
 
         loadMask(images.length-1);
 
         // ************** Track the captured image **************
         // console.log(ntracker);
         animateClean();
-
-
-        // Update the id number
-        id_number += 1;  
-        option_val += 1;
 
     } );
 
@@ -70,14 +64,6 @@ var resultsOverlayCC = resultsOverlay.getContext('2d');
 
 var newImagePositions = ntracker.getCurrentPosition();
 // ntracker.draw(resultsOverlay);
-
-
-// Storing / downloading the image
-// localStorage.setItem(data_uri, id);
-// console.log(localStorage);
-// localStorage.clear();
-    
-// console.log(images);
 
 function animateClean() {
     ntracker.start(document.querySelector('#results'));
@@ -107,8 +93,6 @@ function drawLoop02() {
     }, false);
 
 }
-
-
 
 
 function createOption(id) {

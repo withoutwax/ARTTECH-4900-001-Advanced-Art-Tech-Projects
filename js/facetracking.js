@@ -154,8 +154,8 @@ function switchMasks(pos) {
 
     // we need to extend the positions with new estimated points in order to get pixels immediately outside mask
     
-    console.log('masks[images[currentMask].id]',masks[images[currentMask].id]);
-    console.log('currentMask', currentMask);
+    // console.log('masks[images[currentMask].id]',masks[images[currentMask].id]);
+    // console.log('currentMask', currentMask);
 
     var newMaskPos = masks[images[currentMask].id].slice(0);
     var newFacePos = pos.slice(0);
