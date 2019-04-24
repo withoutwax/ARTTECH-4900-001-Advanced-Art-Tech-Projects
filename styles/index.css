@@ -22,7 +22,7 @@ body {
 }
 
 #webgl2 {
-    /* display: none; */
+    display: none;
 }
 
 #videoel {

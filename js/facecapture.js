@@ -15,8 +15,13 @@ var img_height;
 var option_val = 16;
 var selectMask = document.querySelector('#selectmask');
 
-function take_snapshot() {
-    // take snapshot and get image data
+// take snapshot and get image data
+function take_snapshot(userName) {
+
+    // Clears out the form for the Entering the name.
+    document.querySelector('#user_name').value = '';
+    // console.log('take_snapshot(e)', userName);
+    
     Webcam.snap( function(data_uri) {
         // Display results in page
         var capturedImageElement = document.querySelector('#results').getContext('2d');
@@ -29,21 +34,27 @@ function take_snapshot() {
         };
         img.src = data_uri;
 
+
         // ************** Newly added captured users **************
+        // If the user added their name when capturing their face, the user can user their name on the UI.
+        if (userName) {
+            id_name = userName;
+        } else { // If not, the user then just use a default value (person_1, person_2 etc...)
+            id_number += 1; // Update the id number
+            id_name = "person_" + id_number;
+        }
         // Append the newly captured user to images lists
-        id_number += 1; // Update the id number
-        id_name = "person_" + id_number;
         images.push({"id":id_name, "path":data_uri});
         
 
-        // Update the option in select menu
+        // ************** Update the option in select menu **************
         option_val += 1;
         createOption(id_name);
 
-        loadMask(images.length-1);
 
         // ************** Track the captured image **************
         // console.log(ntracker);
+        loadMask(images.length-1); // ??
         animateClean();
 
     } );
@@ -52,7 +63,7 @@ function take_snapshot() {
 
 
 
-// ************** Track the captured image **************
+// ************** Track the captured image - Continued **************
 var ntracker = new clm.tracker({stopOnConvergence : true});
 ntracker.init();
 
