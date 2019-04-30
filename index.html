@@ -53,55 +53,65 @@
 		<div id="content">
 			<!-- <h2>Facetracking example</h2> -->
 			<div id="container">
-				<video id="videoel" width="320" height="240" preload="auto" style="visibility:hidden" loop playsinline autoplay>
+				<video id="videoel" width="640" height="480" preload="auto" style="visibility:hidden" loop playsinline autoplay>
 				</video>
-				<canvas id="overlay" width="320" height="240" style="display:none"></canvas>
-				<canvas id="webgl" width="320" height="240"></canvas>
+				<canvas id="overlay" width="640" height="480" style="display:none;"></canvas>
+				
+				<!-- Actual overlay -->
+				<canvas id="webgl" width="640" height="480"></canvas> <!-- <input class="btn" type="button" value="wait, loading video" disabled="disabled" onclick="startVideo()" id="startbutton" style="margin-top:80vh;"></input> -->
+				
+				<div id="my_camera"></div>
+
+				
 			</div>
-			<br/>
-			<div id="controls">
-				<input class="btn" type="button" value="wait, loading video & images" disabled="disabled" onclick="startVideo()" id="startbutton"></input>
-				<select name="mask" id="selectmask">
-					<option value="0">Average face</option>
-					<option value="1">Terminator</option>
-					<option value="2">Walter</option>
-					<option value="3">Clooney</option>
-					<option value="4">Bieber</option>
-					<option value="5">Kim</option>
-					<option value="6">Rihanna</option>
-					<option value="7">Audrey Hepburn</option>
-					<option value="8">Bill Murray</option>
-					<option value="9">Sean Connery</option>
-					<option value="10">Cage</option>
-					<option value="11">The Queen</option>
-					<option value="12">Obama</option>
-					<option value="13">Chuck Norris</option>
-					<option value="14">Mona Lisa</option>
-					<option value="15">Picasso</option>
-					<option value="16">Abstract (Scream)</option>
-					
-					<!-- <option value="17">Person_0</option> -->
+			
+			
+			<div id="dev-area">
+				<canvas id="webgl2" width="640" height="480" style="display:none;"></canvas>
 
-				</select>
+				<canvas id="results" width="640" height="480" style="display:none;">Your captured image will appear here...</canvas>
+				<canvas id="results_overlay" width="640" height="480" style="display:none;"></canvas>
+				
+				<div id="captured_complete"></div>
+				<h1>WebcamJS Test Page</h1>
+				<h3>Demonstrates simple 640x480 capture &amp; display</h3>
 			</div>
-			<input class="btn" type="button" value="wait, loading video" disabled="disabled" onclick="startVideo()" id="startbutton" style="margin-top:80vh;"></input>
-			
-			<canvas id="webgl2" width="320" height="240"></canvas>
 
-			
-			<canvas id="results" width="320" height="240">Your captured image will appear here...</canvas>
-			<canvas id="results_overlay" width="320" height="240"></canvas>
-			
-			<div id="captured_complete"></div>
-			<h1>WebcamJS Test Page</h1>
-			<h3>Demonstrates simple 320x240 capture &amp; display</h3>
 
-			<div id="my_camera"></div>
+			<div id="start-button">
+				<form>
+					<input type="text" id="user_name" placeholder="Enter your name">
+					<button type="button" onclick="take_snapshot(document.querySelector('#user_name').value)">Take Snapshot</button>
+				</form>
 
-			<form>
-				<input type="text" id="user_name" placeholder="Enter your name">
-				<button type="button" onclick="take_snapshot(document.querySelector('#user_name').value)">Take Snapshot</button>
-			</form>
+				<div id="controls">
+					<input class="btn" type="button" value="wait, loading video & images" disabled="disabled" onclick="startVideo()" id="startbutton"></input>
+					<select name="mask" id="selectmask">
+						<option value="0">Average face</option>
+						<option value="1">Terminator</option>
+						<option value="2">Walter</option>
+						<option value="3">Clooney</option>
+						<option value="4">Bieber</option>
+						<option value="5">Kim</option>
+						<option value="6">Rihanna</option>
+						<option value="7">Audrey Hepburn</option>
+						<option value="8">Bill Murray</option>
+						<option value="9">Sean Connery</option>
+						<option value="10">Cage</option>
+						<option value="11">The Queen</option>
+						<option value="12">Obama</option>
+						<option value="13">Chuck Norris</option>
+						<option value="14">Mona Lisa</option>
+						<option value="15">Picasso</option>
+						<option value="16">Abstract (Scream)</option>
+						
+						<!-- <option value="17">Person_0</option> -->
+	
+					</select>
+				</div>
+			</div>
+			
+			
 
 			<!-- Pre Config 01 -->
 			<script>
