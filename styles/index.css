@@ -1,11 +1,18 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700);
+/* @import url(https://fonts.googleapis.com/css?family=Lato:300italic,700italic,300,700); */
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700');
+
 
 * {
-    border: solid 1px red;
+    /* border: solid 1px red; */
+    font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+    font-weight: 400;
 }
 
 body {
-    font-family: 'Lato';
+    
     background-color: black;
     margin: 0px auto;
     max-width: 1150px;
@@ -47,8 +54,7 @@ body {
 #content {
     display: grid; /* Using flex-box to organize the main layout between Main camera & Development area */
     grid-template-areas:
-        "camera dev"
-        "button button"
+        "camera start-button"
         ;
     align-items: center;
 
@@ -69,19 +75,65 @@ body {
 }
 #start-button {
     grid-area: "button";
+    padding: 50px;
 }
 
-h2 {
-    font-weight: 400;
-}
+.face-selection {
+    display: grid;
+    grid-template-rows: 450px 50px;
 
-.nogum {
-    display: none;
+    text-align: center;
+}
+#controls {
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+#enter-name {
+    grid-row-start: 2;
+    grid-row-end: 3;
+}
+#enter-name #user_name {
+    background-color: black;
+    border: none;
+    color: white;
+    padding: 10px;
+    font-size: 2rem;
 }
 
 .btn {
-    font-family: 'Lato';
-    font-size: 16px;
+    margin-top: 10px;
+    padding: 15px 30px;
+    font-size: 1rem;
+    background-color: black;
+    border: solid 1px white;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+#controls .start-button {
+    padding: 20px 70px;
+    font-size: 1.5rem;
+    width: auto;
+}
+
+::-webkit-input-placeholder {
+    text-align: center;
+ }
+ 
+ :-moz-placeholder { /* Firefox 18- */
+    text-align: center;  
+ }
+ 
+ ::-moz-placeholder {  /* Firefox 19+ */
+    text-align: center;  
+ }
+ 
+ :-ms-input-placeholder {  
+    text-align: center; 
+ }
+
+.nogum {
+    display: none;
 }
 
 .hide {
